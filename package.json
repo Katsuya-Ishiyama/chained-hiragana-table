@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint src"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "mocha": "^8.2.1",
     "sinon": "^9.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0"
   }
 }
