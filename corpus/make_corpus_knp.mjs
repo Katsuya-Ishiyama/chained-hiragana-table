@@ -1,4 +1,5 @@
 import { readFileSync, readdirSync, writeFileSync } from "fs";
+import { listFiles } from "../lib/utils.mjs";
 
 const DELIMITER = " ";
 const CORPUS_PATH = '/home/katsuya/chained-hiragana-table/corpus.jsonl';
@@ -32,12 +33,6 @@ let extractCorpus = (path) => {
   return lines.filter(checkNounLine)
               .map(extractRequiredData);
 };
-
-let listFiles = (path) =>
-  readdirSync(path, {withFileTypes: true}).flatMap((item) => {
-    let itemPath = `${path}/${item.name}`;
-    return item.isFile() ? itemPath : listFiles(itemPath);
-  });
 
 export let makeCorpus = (path) => {
   let corpus = listFiles(path).flatMap(extractCorpus);
